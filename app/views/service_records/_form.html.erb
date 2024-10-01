@@ -1,0 +1,37 @@
+<%= form_with(model: service_record) do |form| %>
+  <% if service_record.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(service_record.errors.count, "error") %> prohibited this service_record from being saved:</h2>
+
+      <ul>
+        <% service_record.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :partner_id, style: "display: block" %>
+    <%= form.text_field :partner_id %>
+  </div>
+
+  <div>
+    <%= form.label :location_id, style: "display: block" %>
+    <%= form.text_field :location_id %>
+  </div>
+
+  <div>
+    <%= form.label :date, style: "display: block" %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
