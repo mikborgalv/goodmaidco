@@ -18,10 +18,22 @@
         </li>
       </ul>
       <form class="d-flex">
-         <a class="btn btn-primary me-2" href="#" role="button">Signup</a>
-          <a class="btn btn-primary me-2" href="#" role="button">Login</a>
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+
+      <% if current_user %>
+      <%= link_to "Logout", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-primary me-2", role: "button" %>
+
+
+    
+      <% else %>
+
+      <%= link_to "Signup", new_user_registration_path, class: "btn btn-primary me-2", role: "button"%>
+      <%= link_to "Login", new_user_session_path, class: "btn btn-primary me-2", role: "button"%>
+  
+  
+  
+      <% end %>
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
   </div>
