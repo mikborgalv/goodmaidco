@@ -1,5 +1,13 @@
 
 
+
+<% if current_user %>
+ <h1>User Dashboard</h1>
+
+<p>Welcome, <%= current_user.email %>!</p>
+
+<% else %>
+
   <div class="b-example-divider"></div>
 
   <div class="container col-xxl-8 px-4 py-5">
@@ -70,3 +78,4 @@
       </div>
     </div>
   </div>
+<% end %>
