@@ -6,5 +6,6 @@ class ApplicationController < ActionController::Base
       flash[:alert] = "You are not authorized to access this page."
       redirect_to(new_user_registration_path)
     end
+    end
   end
-end
+  
