@@ -1,4 +1,5 @@
 class PartnersController < ApplicationController
+  load_and_authorize_resource
   before_action :set_partner, only: %i[ show edit update destroy ]
 
   # GET /partners or /partners.json
@@ -22,6 +23,7 @@ class PartnersController < ApplicationController
   # POST /partners or /partners.json
   def create
     @partner = Partner.new(partner_params)
+    @user = User.user_id
 
     respond_to do |format|
       if @partner.save

@@ -1,4 +1,5 @@
 class ServiceRecordsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_service_record, only: %i[ show edit update destroy ]
 
   # GET /service_records or /service_records.json
