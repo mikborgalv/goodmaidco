@@ -2,6 +2,21 @@
 ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc { I18n.t("active_admin.dashboard") }
 
+
+  controller do
+    before_action :authenticate_admin_user!
+
+    private
+
+    def authenticate_admin_user!
+      unless current_admin_user
+        redirect_to new_admin_user_session_path, alert: "You are not authorized to access this page."
+      end
+    end
+  end
+
+
+
   content title: proc { I18n.t("active_admin.dashboard") } do
     div class: "blank_slate_container", id: "dashboard_default_message" do
       span class: "blank_slate" do
@@ -11,7 +26,7 @@ ActiveAdmin.register_page "Dashboard" do
     end
 
     # Here is an example of a simple dashboard with columns and panels.
-    
+    #
     # columns do
     #   column do
     #     panel "Recent Posts" do

@@ -4,7 +4,7 @@ class Account < ApplicationRecord
     validates :name, :phone_number, presence: true
 
     def self.ransackable_associations(auth_object = nil)
-      ["locations"]
+      ["locations","user"]
     end
     def self.ransackable_attributes(auth_object = nil)
       ["billing_address", "created_at", "id", "name", "phone_number", "updated_at"]

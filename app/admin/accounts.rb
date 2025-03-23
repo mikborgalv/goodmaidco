@@ -5,7 +5,7 @@ ActiveAdmin.register Account do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :name, :phone_number, :billing_address
+    permit_params :name, :phone_number, :billing_address
   #
   # or
   #

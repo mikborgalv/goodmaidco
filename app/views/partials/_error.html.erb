@@ -1,2 +1,7 @@
-<div class="alert alert-warning"><%= alert %></div>
-<div class="alert alert-success"><%= notice %></div>
+<% if alert %>
+  <div class="alert alert-warning"><%= alert %></div>
+<% end %>
+
+<% if notice %>
+  <div class="alert alert-success"><%= notice %></div>
+<% end %>

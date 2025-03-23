@@ -296,6 +296,7 @@ DEPENDENCIES
   devise
   jbuilder
   jsbundling-rails
+  nokogiri (~> 1.16, >= 1.16.7)
   puma (~> 5.0)
   rails (~> 7.0.8, >= 7.0.8.4)
   sassc-rails

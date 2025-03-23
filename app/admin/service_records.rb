@@ -5,7 +5,7 @@ ActiveAdmin.register ServiceRecord do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :partner_id, :location_id, :date, :status
+   permit_params :partner_id, :location_id, :date, :status
   #
   # or
   #
