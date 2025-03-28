@@ -7,7 +7,7 @@ class Account < ApplicationRecord
       ["locations","user"]
     end
     def self.ransackable_attributes(auth_object = nil)
-      ["billing_address", "created_at", "id", "name", "phone_number", "updated_at"]
+      ["billing_address", "created_at", "id", "name", "phone_number", "updated_at", "user_id"]
     end
   end
   

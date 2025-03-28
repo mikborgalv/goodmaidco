@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_03_220314) do
+ActiveRecord::Schema[7.0].define(version: 2025_03_28_182444) do
   create_table "accounts", force: :cascade do |t|
     t.string "name"
     t.string "phone_number"
     t.string "billing_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
   create_table "active_admin_comments", force: :cascade do |t|
@@ -74,6 +76,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_03_220314) do
     t.float "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_partners_on_user_id"
   end
 
   create_table "service_records", force: :cascade do |t|
@@ -100,9 +104,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_03_220314) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "accounts", "users"
   add_foreign_key "feedbacks", "service_records"
   add_foreign_key "feedbacks", "users"
   add_foreign_key "locations", "accounts"
+  add_foreign_key "partners", "users"
   add_foreign_key "service_records", "locations"
   add_foreign_key "service_records", "partners"
 end

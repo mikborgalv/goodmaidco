@@ -1,7 +1,12 @@
 <div class="container">
 <p style="color: green"><%= notice %></p>
 
-<h1>Accounts</h1>
+<h1>Your Accounts</h1>
+<p>Logged in as: <%= current_user.email %></p>
+
+<table>
+  <!-- your existing table code -->
+</table>
 
 <div id="accounts">
   <% @accounts.each do |account| %>

@@ -23,7 +23,7 @@ class PartnersController < ApplicationController
 
   # POST /partners or /partners.json
   def create
-    @partner = Partner.new(partner_params)
+    @partner = current_user.partners(partner_params)
 
     respond_to do |format|
       if @partner.save
