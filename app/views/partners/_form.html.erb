@@ -26,6 +26,11 @@
     <%= form.text_field :rating %>
   </div>
 
+    <div>
+    <%= form.label :role, style: "display: block" %>
+    <%= form.select :role, Partner::ROLES, { include_blank: 'Select Role' }, required: true %>
+  </div>
+
   <div>
     <%= form.submit %>
   </div>

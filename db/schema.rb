@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_03_28_182444) do
+ActiveRecord::Schema[7.0].define(version: 2025_03_28_195411) do
   create_table "accounts", force: :cascade do |t|
     t.string "name"
     t.string "phone_number"
@@ -77,6 +77,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_28_182444) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
+    t.string "role"
+    t.index ["user_id", "role"], name: "index_partners_on_user_id_and_role", unique: true
     t.index ["user_id"], name: "index_partners_on_user_id"
   end
 
