@@ -6,8 +6,15 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :accounts, dependent: :destroy
-
+  has_many :feedbacks, dependent: :nullify
+  has_many :locations, through: :accounts
   validates :email, presence: true, uniqueness: { case_sensitive: false }
+  has_many :partners, -> { where(role: 'provider') }, dependent: :destroy, inverse_of: :user
+  
+  def admin?
+    role == 'admin'
+  end
+
 
       # Role-based methods for authorization
       def admin?
