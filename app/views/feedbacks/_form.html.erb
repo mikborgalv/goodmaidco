@@ -1,37 +1,40 @@
-<%= form_with(model: feedback) do |form| %>
-  <% if feedback.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
-
-      <ul>
-        <% feedback.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%# app/views/feedbacks/new.html.erb %>
+<div class="container mt-4">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+      <h2>Service Feedback</h2>
     </div>
-  <% end %>
+    <div class="card-body">
+      <div class="mb-4">
+        <h5>Service Details</h5>
+        <p>
+          <strong>Location:</strong> <%= @service_record.location.name %><br>
+          <strong>Provider:</strong> <%= @service_record.partner.name %><br>
+          <strong>Date:</strong> <%= @service_record.date.strftime("%B %d, %Y") %>
+        </p>
+      </div>
 
-  <div>
-    <%= form.label :service_record_id, style: "display: block" %>
-    <%= form.text_field :service_record_id %>
-  </div>
+      <%= form_with(model: [@service_record, @feedback], local: true) do |f| %>
+        <div class="mb-3">
+          <%= f.label :rating, "Rating", class: "form-label" %>
+          <div class="star-rating">
+            <% 5.downto(1) do |i| %>
+              <%= f.radio_button :rating, i, id: "rating_#{i}" %>
+              <%= f.label "rating_#{i}", "★", class: "star-label" %>
+            <% end %>
+          </div>
+        </div>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
+        <div class="mb-3">
+          <%= f.label :content, "Comments", class: "form-label" %>
+          <%= f.text_area :content, class: "form-control", rows: 4, required: true %>
+        </div>
 
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
+        <div class="actions">
+          <%= f.submit "Submit Feedback", class: "btn btn-primary" %>
+          <%= link_to "Cancel", dashboard_path, class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div>
-    <%= form.label :rating, style: "display: block" %>
-    <%= form.number_field :rating %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

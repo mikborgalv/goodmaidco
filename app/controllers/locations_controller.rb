@@ -4,7 +4,7 @@ class LocationsController < ApplicationController
 
   # GET /locations or /locations.json
   def index
-    @locations = Location.all
+    @locations = current_user.locations.includes(:account, service_records: :partner)
   end
 
   # GET /locations/1 or /locations/1.json
