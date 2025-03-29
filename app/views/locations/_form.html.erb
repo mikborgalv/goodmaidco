@@ -11,11 +11,15 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :account_id, style: "display: block" %>
-    <%= form.text_field :account_id %>
-  </div>
-
+ <div class="mb-3">
+  <%= form.label :account_id, "Select Account", class: "form-label" %>
+  <%= form.collection_select :account_id, 
+                           current_user.accounts, 
+                           :id, 
+                           :name, 
+                           { prompt: "Select an Account" }, 
+                           { class: "form-select" } %>
+</div>
   <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
